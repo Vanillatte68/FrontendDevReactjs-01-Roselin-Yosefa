@@ -1,9 +1,11 @@
 // import useState & useEffect and other component
 import { useState, useEffect } from "react";
-import RestaurantDetail from "./restoDetail";
+import { Rating } from "react-simple-star-rating";
+import "./api.css";
+// import RestaurantDetail from "./restoDetail";
 
 // api data
-const API_KEY = "a89880c157msh81b16aad16d1791p1ec4c3jsnc9c7d2ea5e8d";
+const API_KEY = "98f87e52b4msh0e83d977b417f59p18af93jsnb229400fbbee";
 const API_HOST = "tripadvisor16.p.rapidapi.com";
 
 const url =
@@ -61,22 +63,21 @@ const FetchResto = ({ filterBy, filterValue }) => {
   // }
 
   return (
-    <div>
+    <section className="resto-container">
       {filteredRestaurants.map((resto) => (
-        <div style={restoContainer} key={resto.id}>
+        <div className="resto-card" key={resto.id}>
           <img
-            width="100"
-            height="100"
+            className="img-class"
             src={resto.squareImgUrl}
             alt={resto.name}
           ></img>
           <h3>{resto.name}</h3>
-          <span>{resto.averageRating}</span>
-          <div style={detailBox}>
+          <Rating initialValue={resto.averageRating} size="14px" readonly />
+          <div className="detail-box">
             <span>{resto.parentGeoName}</span>
             <span>{resto.priceTag}</span>
           </div>
-          <button style={btnDetail} type="button" id="btnDetail">
+          <button className="btn-detail" type="button" id="btnDetail">
             Learn More
           </button>
         </div>
@@ -85,32 +86,8 @@ const FetchResto = ({ filterBy, filterValue }) => {
       {/* {selectedResto && ( // render the restaurant details when a restaurant is selected
         <RestaurantDetail restaurant={selectedResto} /> // use the RestaurantDetail component to render the details
       )} */}
-    </div>
+    </section>
   );
-};
-
-// styling
-const restoContainer = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  marginTop: "20px",
-  marginBottom: "20px",
-};
-
-const detailBox = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
-
-const btnDetail = {
-  backgroundColor: "#000",
-  color: "#fff",
-  padding: "5px 10px",
-  border: "none",
-  cursor: "pointer",
 };
 
 export default FetchResto;

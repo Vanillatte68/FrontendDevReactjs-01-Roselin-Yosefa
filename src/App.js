@@ -66,9 +66,7 @@ function App() {
         </div>
 
         {/* resto list in grid */}
-        <section className="container">
-          <FetchResto filterBy={filterBy} filterValue={filterValue} />
-        </section>
+        <FetchResto filterBy={filterBy} filterValue={filterValue} />
 
         {/* load more */}
         <div className="btnLoad">

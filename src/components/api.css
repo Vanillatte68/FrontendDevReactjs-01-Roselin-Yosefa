@@ -1,0 +1,36 @@
+/* styling for the component */
+.resto-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.resto-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  max-width: fit-content;
+  background-color: gainsboro;
+  gap: 0.25rem;
+}
+
+.detail-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img-class {
+  max-width: 170px;
+  width: 100%;
+  height: auto;
+}
+
+.btn-detail {
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
