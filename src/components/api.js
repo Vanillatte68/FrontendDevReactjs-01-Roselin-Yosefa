@@ -1,5 +1,6 @@
 // import useState & useEffect and other component
 import { useState, useEffect } from "react";
+import RestaurantDetail from "./restoDetail";
 
 // api data
 const API_KEY = "a89880c157msh81b16aad16d1791p1ec4c3jsnc9c7d2ea5e8d";
@@ -41,6 +42,8 @@ const filterRestaurants = (restaurants, filterBy, filterValue) => {
 // fetch data and map to the component
 const FetchResto = ({ filterBy, filterValue }) => {
   const [resto, setResto] = useState([]);
+  // const [selectedResto, setSelectedResto] = useState(null);
+  // add a new state to store the selected restaurant
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -52,6 +55,10 @@ const FetchResto = ({ filterBy, filterValue }) => {
   }, []);
 
   const filteredRestaurants = filterRestaurants(resto, filterBy, filterValue);
+
+  // const handleDetailClick = (resto) => {
+  //   setSelectedResto(resto);
+  // }
 
   return (
     <div>
@@ -69,9 +76,15 @@ const FetchResto = ({ filterBy, filterValue }) => {
             <span>{resto.parentGeoName}</span>
             <span>{resto.priceTag}</span>
           </div>
-          <button style={btnDetail} type="button" id="btnDetail"></button>
+          <button style={btnDetail} type="button" id="btnDetail">
+            Learn More
+          </button>
         </div>
       ))}
+      {/* show restaurant details */}
+      {/* {selectedResto && ( // render the restaurant details when a restaurant is selected
+        <RestaurantDetail restaurant={selectedResto} /> // use the RestaurantDetail component to render the details
+      )} */}
     </div>
   );
 };
